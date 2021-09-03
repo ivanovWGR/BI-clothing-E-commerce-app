@@ -1,13 +1,17 @@
 import React from "react";
 import "./header.component.styles.scss";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../assets/crown.svg"; //import svg as Logo from assets
+import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.utills";
+import setCurrentUser from "../../redux/user/user.actions";
+import { useSelector, useDispatch } from "react-redux";
 
-const Header = ({ currUser }) => {
+const Header = () => {
+  const currUser = useSelector((state) => state.user.currentUser);
   return (
     <div className="header">
       <Link to="/" className="logo-container">
+      {console.log(currUser,"header comp 14")}
         <Logo className="logo" />
       </Link>
       <div className="options">

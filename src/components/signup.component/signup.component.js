@@ -39,7 +39,6 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  console.log(displayName)
     try {
       const { user } = auth.createUserWithEmailAndPassword(email, password);
       await createUserProfileDocument(user, { displayName });
@@ -53,10 +52,10 @@ const SignUp = () => {
 
     try {
       auth.signInWithEmailAndPassword(email, password);
-      setEmail("") ; 
+      setEmail("");
       setPassword("");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
   return (
