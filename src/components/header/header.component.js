@@ -6,12 +6,16 @@ import { auth } from "../../firebase/firebase.utills";
 import setCurrentUser from "../../redux/user/user.actions";
 import { useSelector, useDispatch } from "react-redux";
 
+import CartIcon from "../cart-icon.component/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown";
+
 const Header = () => {
   const currUser = useSelector((state) => state.user.currentUser);
+  const hidden = useSelector((state) => state.cart.hidden);
+
   return (
     <div className="header">
       <Link to="/" className="logo-container">
-      {console.log(currUser,"header comp 14")}
         <Logo className="logo" />
       </Link>
       <div className="options">
@@ -23,15 +27,17 @@ const Header = () => {
           CONTACT
         </Link>
         {currUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
+          <Link className="option" to="" onClick={() => auth.signOut()}>
             SIGN OUT
-          </div>
+          </Link>
         ) : (
           <Link className="option" to="/signIn">
             SIGN IN
           </Link>
         )}
+        <CartIcon />
       </div>
+      {hidden ? null : <CartDropdown />}
     </div>
   );
 };
