@@ -12,6 +12,7 @@ import setCurrentUser from "./redux/user/user.actions";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
