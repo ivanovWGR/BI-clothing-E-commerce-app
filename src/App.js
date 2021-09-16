@@ -3,6 +3,7 @@ import "./App.css";
 import HomePage from "./pages/homePage/homepage.component";
 import ShopPage from "./pages/shopPage/shoppage.component";
 import Header from "./components/header/header.component";
+import CheckOutPage from "./pages/checkOutPage/checkout.component";
 import SignInSignUpPage from "./pages/sign-in-sign-upPage/sign-in-sign-up";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { auth } from "./firebase/firebase.utills";
@@ -42,6 +43,7 @@ function App() {
             exact
             render={() => (user ? <Redirect to="/" /> : <SignInSignUpPage />)}
           />
+          <Route path="/checkout" exact component={CheckOutPage} />
         </>
       </Switch>
     </div>

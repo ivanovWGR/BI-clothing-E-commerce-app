@@ -8,14 +8,17 @@ const CartIcon = () => {
   const toogleHidden = useSelector((state) => {
     return state.cart.hidden;
   });
+  const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   return (
     <div className="cart-icon" onClick={() => dispatch(toogleCartHidden())}>
       <ShopingIcon className="shoping-icon" />
-      <span className="item-count">0</span>
+      <span className="item-count">
+        {cartItems.reduce((acc, cartItem) => acc + cartItem.quantity, 0)}
+      </span>
     </div>
   );
-};
+}       
 
 export default CartIcon;
