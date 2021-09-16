@@ -1,5 +1,9 @@
-import { TOOGLE_CART_HIDDEN } from "./cart.types";
-import { ADD_ITEM } from "./cart.types";
+import {
+  TOOGLE_CART_HIDDEN,
+  CLEAR_ITEM_FROM_CART,
+  ADD_ITEM,
+  REMOVE_ITEM,
+} from "./cart.types";
 
 const toogleCartHidden = () => {
   return {
@@ -11,6 +15,20 @@ export const addItemInCart = (object) => {
   return {
     type: ADD_ITEM,
     payload: object,
+  };
+};
+
+export const clearItemFromCart = (newItemId) => {
+  return {
+    type: CLEAR_ITEM_FROM_CART,
+    payload: newItemId,
+  };
+};
+
+export const removeItem = (item) => {
+  return {
+    type: REMOVE_ITEM,
+    payload: item,
   };
 };
 

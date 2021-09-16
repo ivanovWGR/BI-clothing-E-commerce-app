@@ -15,7 +15,7 @@ const CartIcon = () => {
     <div className="cart-icon" onClick={() => dispatch(toogleCartHidden())}>
       <ShopingIcon className="shoping-icon" />
       <span className="item-count">
-        {cartItems.reduce((acc, cartItem) => acc + cartItem.quantity, 0)}
+        {cartItems?.reduce((acc, cartItem) => acc + cartItem?.quantity, 0)}
       </span>
     </div>
   );

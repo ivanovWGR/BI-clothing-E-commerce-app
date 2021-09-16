@@ -1,16 +1,19 @@
 import React from "react";
-import { selectCartItems,selectCartTotal } from "../../redux/cart/carthidde.selector";
-import { useSelector} from "react-redux";
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../../redux/cart/carthidde.selector";
+import { useSelector } from "react-redux";
 import "./checkout.styles.scss";
 
 //components
 import CheckoutItem from "../../components/checkoutItem/checkitem.component";
 
 const CheckOutPage = () => {
-  const { cartItems,selectTotal } = useSelector((state) => {
+  const { cartItems, selectTotal } = useSelector((state) => {
     return {
       cartItems: selectCartItems(state),
-      selectTotal:selectCartTotal(state)
+      selectTotal: selectCartTotal(state),
     };
   });
   return (
@@ -34,7 +37,9 @@ const CheckOutPage = () => {
       </div>
 
       <div>
- {cartItems.map(cartItem=>(<CheckoutItem key={cartItem.id} {...cartItem}/>))}
+        {cartItems.map((cartItem) => (
+          <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+        ))}
       </div>
       <span className="total">Total : {selectTotal}</span>
     </div>
